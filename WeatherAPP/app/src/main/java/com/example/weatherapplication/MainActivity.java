@@ -173,44 +173,37 @@ public class MainActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, tempUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Log.d("response", s);  // Log the full response
+                Log.d("response", s); 
 
                 String Details = "";
 
                 try {
                     JSONObject jsonResponse = new JSONObject(s);
 
-                    // Log the entire response to see its structure
                     Log.d("JSON Response", jsonResponse.toString());
 
                     if (jsonResponse.has("weather") && jsonResponse.has("main") && jsonResponse.has("wind") &&
                             jsonResponse.has("clouds") && jsonResponse.has("sys") && jsonResponse.has("name")) {
 
-                        // Parse the weather array
                         JSONArray jsonArray = jsonResponse.getJSONArray("weather");
                         JSONObject jsonObjectWeather = jsonArray.getJSONObject(0);
                         String description = jsonObjectWeather.getString("description");
 
-                        // Parse the main object
                         JSONObject jsonObjectMain = jsonResponse.getJSONObject("main");
                         double temp = jsonObjectMain.getDouble("temp") - 273.15;
                         double feelsLike = jsonObjectMain.getDouble("feels_like") - 273.15;
                         float pressure = jsonObjectMain.getInt("pressure");
                         int humidity = jsonObjectMain.getInt("humidity");
 
-                        // Parse the wind object
                         JSONObject jsonObjectWind = jsonResponse.getJSONObject("wind");
                         String wind = jsonObjectWind.getString("speed");
 
-                        // Parse the clouds object
                         JSONObject jsonObjectClouds = jsonResponse.getJSONObject("clouds");
                         String cloud = jsonObjectClouds.getString("all");
 
-                        // Parse the sys object
                         JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
                         String country = jsonObjectSys.getString("country");
 
-                        // Get the city name
                         String cityName = jsonResponse.getString("name");
 
                         city.setText(cityName);
@@ -226,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
                         details.setText(Details);
                     } else {
-                        // Handle missing keys in the JSON response
+                        
                         Toast.makeText(MainActivity.this, "Incomplete weather data received", Toast.LENGTH_SHORT).show();
                         Log.e("response", "Incomplete weather data received");
                     }
