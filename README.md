@@ -34,25 +34,31 @@ Prompts the user to enable GPS if it is turned off.
 **Setup Instructions**
 
 Clone the Repository:
+
 git clone https://github.com/Janiskanth/E2145145_ITE2152_Practical_Examination.git
 cd WeatherAPP
 
 Open the Project in Android Studio:
+
 Start Android Studio and open the project from the cloned repository.
 
 Add OpenWeatherMap API Key:
+
 Replace the placeholder appid in MainActivity.java with your OpenWeatherMap API key: private final String appid = "YOUR_API_KEY_HERE";
 
 Add Dependencies
+
 Add the Volley library to your build.gradle file: dependencies {
     implementation 'com.android.volley:volley:1.2.1'
 }
 
 Run the App:
+
 Connect your Android device or start an emulator.
 Build and run the project on your device/emulator.
 
 **Usage Instraction**
+
 Open the app and click the "Show Weather" button.
 The app will request location permissions if not already granted.
 If GPS is enabled, the app will fetch and display the current weather details.
